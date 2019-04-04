@@ -6,23 +6,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
-
 import com.example.deepfruitlight.model.Pokemon;
 
 import java.util.List;
 
 public class MainActivity extends Activity {
 
-    // Trois variables de class
+    // Variables de class
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
     private ProgressBar loader;
-
     private MainController controller;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +30,6 @@ public class MainActivity extends Activity {
 
         controller = new MainController(this);
         controller.onCreate();
-        // use this setting to
-        // improve performance if you know that changes
-        // in content do not change the layout size
-        // of the RecyclerView
-
-
-
-
     }
 
     public void showLoader(){
@@ -55,13 +43,12 @@ public class MainActivity extends Activity {
     public void showList(List<Pokemon> list)
     {
         recyclerView.setHasFixedSize(true);
-        // Layout manager = Gestionnaire de Layout
+        // Gestionnaire de Layout
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        // define an adapter
-        mAdapter = new MyAdapter(list);
+        // Définir un adaptateur
+        mAdapter = new MyAdapter(list, getApplicationContext());
         recyclerView.setAdapter(mAdapter);
     }
-
 }

@@ -1,5 +1,7 @@
 package com.example.deepfruitlight;
 
+import android.util.Log;
+
 import com.example.deepfruitlight.model.Pokemon;
 import com.example.deepfruitlight.model.RestPokemonResponse;
 import com.google.gson.Gson;
@@ -12,7 +14,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
 
 // C'est le controller qui sait quelle opération il faut effectuer
 
@@ -39,7 +40,7 @@ public class MainController {
 
         // Création objet Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://pokeapi.co/api/v2/")
+                .baseUrl("https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -52,17 +53,15 @@ public class MainController {
             @Override
             public void onResponse(Call<RestPokemonResponse> call, Response<RestPokemonResponse> response) {
                 RestPokemonResponse restPokemonResponse = response.body();
-                List<Pokemon> listPokemon = restPokemonResponse.getResults();
+                List<Pokemon> listPokemon = restPokemonResponse.getPokemon();
                 mainActivity.showList(listPokemon);
+                mainActivity.hideLoader();
             }
 
             @Override
             public void onFailure(Call<RestPokemonResponse> call, Throwable t) {
-                System.out.println("API ERROR");
-
+                Log.d("Erreur", "API ERROR");
             }
         });
-
-
     }
 }

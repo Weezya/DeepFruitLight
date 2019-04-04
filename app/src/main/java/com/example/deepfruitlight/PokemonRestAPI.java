@@ -7,9 +7,7 @@ import retrofit2.http.GET;
 
 public interface PokemonRestAPI {
 
-
-
-    @GET("pokemon")
+    @GET("pokedex.json")
     Call<RestPokemonResponse> getListPokemon();
 
 }

@@ -1,18 +1,22 @@
 package com.example.deepfruitlight;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.deepfruitlight.model.Pokemon;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Pokemon> values;
+    private Context context;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -21,6 +25,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
+        public ImageView imV;
         public View layout;
 
         public ViewHolder(View v) {
@@ -28,6 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            imV = (ImageView) v.findViewById(R.id.icon);
         }
     }
 
@@ -42,14 +48,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Pokemon> myDataset) {
+    public MyAdapter(List<Pokemon> myDataset, Context context) {
+
         values = myDataset;
+        this.context=context;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
@@ -67,8 +74,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         Pokemon currentPokemon = values.get(position);
         holder.txtHeader.setText(currentPokemon.getName());
-
-        holder.txtFooter.setText("Nom : " + currentPokemon.getName());
+        holder.txtFooter.setText("Numero Id : " + currentPokemon.getId());
+        Picasso.with(context)
+                .load(currentPokemon.getImg())
+                .into(holder.imV);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

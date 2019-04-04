@@ -2,8 +2,27 @@ package com.example.deepfruitlight.model;
 
 public class Pokemon {
 
+
+    private String id;
+    private String num;
     private String name;
-    private String url;
+    private String img;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
 
     public String getName() {
         return name;
@@ -13,11 +32,11 @@ public class Pokemon {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getImg() {
+        return img;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImg(String img) {
+        this.img = img;
     }
 }
