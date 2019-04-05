@@ -1,6 +1,9 @@
 # Pokemon-Light
 
 Bonjour lecteur et bienvenue dans le répertoire GitHub de mon projet de programmation mobile sur **Android Studio** !
+Ce programme a été développé par Loan NGUEMA, étudiant en 3ème année à l'ESIEA.
+
+## Présentation
 
 Dans ce répertoire tu trouveras tout mon travail effectué sur cet outil pour concevoir une application mobile sous Android qui liste différents Pokémon (151 sur la liste). L'application comporte trois activités principales :
 
@@ -12,24 +15,78 @@ Voici des photos des trois activités respectives :
 
 ![img](https://image.noelshack.com/fichiers/2019/14/5/1554500769-laucnher.jpg)  ![img](https://image.noelshack.com/fichiers/2019/14/5/1554500769-list.jpg)  ![img](https://image.noelshack.com/fichiers/2019/14/5/1554500769-descriptionitem.jpg)
 
-## Détails sur les différentes activités
+## Consignes respectées
+
+- 3 écrans (3 activités)
+- Appel WebService à une API Rest avec Retrofit
+- Affichage de la liste dans un RecyclerView
+- Stockage des données en cache.
+- Architecture MVC (Model, View, Controller)
+- Gitflow avec les branches Master et Develop
+- Animation : ProgressBar en cercle lors de la récupération des données
 
 
-- La page de lancement :
+L'API initialement utilisée est l'API de l'enseignant :
+````
+https://pokeapi.co/api/v2/
+````
+Finalement, l'API utilisée est la suivante :
+````
+https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/
+````
 
-La page de lancement est une activité qui se lance au démarrage de l'application. Elle comporte une image et deux lignes de textes. Il faut cliquer sur l'image pour lancer la liset de Pokémon.
 
-- La liste des Pokémon :
+## Divers techniques employées :
 
-La liste de Pokémon est un RecyclerView issu d'une API prétéélchargée via **Internet** et qui a la capacité d'**être stockée en cache** par la suite.
+- Listener
+- Button (image sur la page de lancement)
+- Intent
+- Notification (à l'ouverture de la description du Pokémon)
 
-- La page de description pour chaque Pokémon :
+- RecyclerView
+- Adapter
+- ViewHolder
 
-La page de description compote une photo (normalement du Pokémon), son nom et une notification avec son nom également qui apparait dès qu'on affiche cette page et qui disaparait après quelques secondes. Pour revenir sur la liste il suffit d'utiliser le bouton retour d'Android.
+- LinearLayout
+- RelativeLayout
+- ConstraintLayout
 
-## Récapitalif des activités
+- Changement du nom et de l'icône de l'application
+- Utilisation de couleurs personnalisées dans les values/colors
+- Ajout d'images dans les drawable
+- Fabrication de l'APK
+- Utilisation d'un Android Virtual Device pour la simulation
 
-SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
+
+## Problèmes rencontrés :
+
+- Picassso pour charger une image via une URL
+- La documentation sur Internet est parfois obsolète
+
+
+## Axes d'amélioration :
+
+- Utiliser une API compatible avec la version de l'AVD pour Picasso
+- Rajouter du contenu dans la description de chaque Pokémon
+
+
+## Fonctionnalitées des différentes activités
+
+
+- Page de lancement :
+
+La page de lancement est une activité qui se lance au démarrage de l'application. Elle comporte une image et deux lignes de textes. Il faut cliquer sur l'image pour lancer la liste de Pokémon comme indiquée en dessous.
+
+- Liste des Pokémon :
+
+La liste de Pokémon est un RecyclerView issu d'une API prétéléchargée via **Internet** et qui a la capacité d'**être stockée en cache** par la suite. Lors qu'on a cliquée sur le logo de la page de lancement, une bar de progression en cercle apparait puis disparait lorsque les données sont chargées.
+
+- Description pour chaque Pokémon :
+
+La page de description comporte une photo (normalement du Pokémon), son nom et une notification avec son nom également qui apparait dès qu'on affiche cette page et qui disparait après quelques secondes. Pour revenir sur la liste il suffit d'utiliser le bouton retour d'Android.
+
+
+## Récapitulatif des activités
 
 |Activité          |Classe Java        |
 |------------------|-------------------|
@@ -38,8 +95,9 @@ SmartyPants converts ASCII punctuation characters into "smart" typographic punct
 |Description       |DescripActivity    |
 
 
+## Vue du projet Android
 
-## L'architecture
+Voici une image sur Android Studio du répertoire avec la vue dite Android :
 
 ![img](https://image.noelshack.com/fichiers/2019/14/5/1554500769-rep.jpg)
 
