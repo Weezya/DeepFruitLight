@@ -1,6 +1,7 @@
 # Pokemon-Light
 
 Bonjour lecteur et bienvenue dans le répertoire GitHub de mon projet de programmation mobile sur **Android Studio** !
+
 Ce programme a été développé par Loan NGUEMA, étudiant en 3ème année à l'ESIEA.
 
 ## Présentation
