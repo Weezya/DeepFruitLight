@@ -6,7 +6,7 @@ Ce programme a été développé par Loan NGUEMA, étudiant en 3ème année à l
 
 ## Présentation
 
-Dans ce répertoire tu trouveras tout mon travail effectué sur cet outil pour concevoir une application mobile sous Android qui liste différents Pokémon (151 sur la liste). L'application comporte trois activités principales :
+Ce projet est une application programmée sous Android listant différents Pokémon (151 sur cette liste) à l'aide d'une API et capable de stocker les données en cache. Elle comporte trois activités principales :
 
 - La page de lancement
 - La liste des Pokémon
