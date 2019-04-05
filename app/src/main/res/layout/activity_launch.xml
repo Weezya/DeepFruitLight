@@ -34,7 +34,7 @@
         android:fontFamily="@font/ubuntu"
         android:text="Bienvenue sur ton application Pokemon !"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
+        android:textColor="@color/noir"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView"

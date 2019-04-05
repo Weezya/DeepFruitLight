@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.deepfruitlight.model.OnPoketClick;
 import com.example.deepfruitlight.model.Pokemon;
 import com.squareup.picasso.Picasso;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Pokemon> values;
     private Context context;
+    private final OnPoketClick click;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -48,10 +50,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Pokemon> myDataset, Context context) {
+    public MyAdapter(List<Pokemon> myDataset, Context context, OnPoketClick click) {
 
         values = myDataset;
         this.context=context;
+        this.click=click;
     }
 
     // Create new views (invoked by the layout manager)
@@ -72,12 +75,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Pokemon currentPokemon = values.get(position);
+        final Pokemon currentPokemon = values.get(position);
         holder.txtHeader.setText(currentPokemon.getName());
-        holder.txtFooter.setText("Numero Id : " + currentPokemon.getId());
+        holder.txtFooter.setText("Numéro id = " + currentPokemon.getId());
         Picasso.with(context)
                 .load(currentPokemon.getImg())
                 .into(holder.imV);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                click.onPoketClick(currentPokemon);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
