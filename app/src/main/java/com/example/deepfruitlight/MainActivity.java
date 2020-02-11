@@ -1,28 +1,29 @@
 package com.example.deepfruitlight;
 
-import android.app.Activity;
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.example.deepfruitlight.model.OnPoketClick;
 import com.example.deepfruitlight.model.Pokemon;
 
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
-    // Trois variables de class
+    // Variables de class
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
     private ProgressBar loader;
-
     private MainController controller;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +33,8 @@ public class MainActivity extends Activity {
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         loader = findViewById(R.id.loader_main_activity);
 
-        controller = new MainController(this);
+        controller = new MainController(this, getSharedPreferences("donnee", Context.MODE_PRIVATE));
         controller.onCreate();
-        // use this setting to
-        // improve performance if you know that changes
-        // in content do not change the layout size
-        // of the RecyclerView
-
-
-
-
     }
 
     public void showLoader(){
@@ -55,13 +48,21 @@ public class MainActivity extends Activity {
     public void showList(List<Pokemon> list)
     {
         recyclerView.setHasFixedSize(true);
-        // Layout manager = Gestionnaire de Layout
+        // Gestionnaire de Layout
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        // define an adapter
-        mAdapter = new MyAdapter(list);
+        // Définir un adaptateur
+        mAdapter = new MyAdapter(list, getApplicationContext(), new OnPoketClick() {
+            @Override
+            public void onPoketClick(Pokemon poke) {
+                Toast.makeText(getApplicationContext(),poke.getName(),Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getApplicationContext(),DescripActivity.class);
+                intent.putExtra("item",poke.getName());
+                //intent.putExtra("icon",poke.getImg());
+                MainActivity.this.startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
     }
-
 }

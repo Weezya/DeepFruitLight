@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Deep Fruit Light</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="app_name">Pokemon</string>
+    <string name="item_name">Nom</string>
+    <string name="item_info1">info1</string>
 </resources>
