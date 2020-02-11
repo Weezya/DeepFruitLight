@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.deepfruitlight.model.OnPoketClick;
 import com.example.deepfruitlight.model.Pokemon;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -77,10 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final Pokemon currentPokemon = values.get(position);
         holder.txtHeader.setText(currentPokemon.getName());
-        holder.txtFooter.setText("Numéro id = " + currentPokemon.getId());
-        Picasso.with(context)
-                .load(currentPokemon.getImg())
-                .into(holder.imV);
+        holder.txtFooter.setText("Id number = " + currentPokemon.getId());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),poke.getName(),Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getApplicationContext(),DescripActivity.class);
                 intent.putExtra("item",poke.getName());
-                intent.putExtra("icon",poke.getImg());
+                //intent.putExtra("icon",poke.getImg());
                 MainActivity.this.startActivity(intent);
             }
         });

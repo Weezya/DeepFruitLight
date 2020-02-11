@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 public class DescripActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
@@ -35,11 +33,7 @@ public class DescripActivity extends AppCompatActivity {
         // dans la liste mais cela ne marche pas, impossible à régler même en changeant d'API
         // Il est possible que ce soit à cause de l'Android Virtual Device Manager
 
-        ImageView imageView = findViewById(R.id.item_icon);
-        Picasso.with(getApplicationContext())
-                .load(img)
-                .into(imageView);
-
+        //ImageView imageView = findViewById(R.id.item_icon);
     }
 
 }

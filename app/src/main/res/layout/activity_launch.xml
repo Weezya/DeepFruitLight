@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".LaunchActivity"
     android:gravity="center">
@@ -34,7 +34,7 @@
         android:fontFamily="@font/ubuntu"
         android:text="Bienvenue sur ton application Pokemon !"
         android:textAlignment="center"
-        android:textColor="@color/noir"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView"
@@ -43,6 +43,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/textView"
         android:layout_width="257dp"
         android:layout_height="26dp"
